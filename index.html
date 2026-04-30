@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="it">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Portfolio di Frelerr con video, social, esperimenti e commissioni.">
+    <title>Frelerr</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <canvas id="liquid-canvas" aria-hidden="true"></canvas>
+
+    <header class="topbar">
+      <a class="brand" href="#home" aria-label="Portfolio home">
+        <span class="brand-mark"></span>
+        <span data-i18n="siteName">Portfolio</span>
+      </a>
+
+      <nav class="nav-links" aria-label="Main navigation">
+        <a href="#work" data-i18n="navWork">Progetti</a>
+        <a href="#about" data-i18n="navAbout">Info</a>
+        <a href="#contact" data-i18n="navContact">Link</a>
+      </nav>
+
+      <div class="toolbar">
+        <span class="sr-only" data-i18n="languageLabel">Lingua</span>
+        <div id="language-select" class="language-options" aria-label="Language"></div>
+        <button class="icon-button edit-button" id="edit-open" type="button" aria-label="Editor">
+          Edit
+        </button>
+      </div>
+    </header>
+
+    <main id="home">
+      <section class="hero">
+        <div class="hero-copy">
+          <p class="eyebrow" data-i18n="eyebrow">Portfolio di Frelerr</p>
+          <h1 data-i18n="headline">Frelerr</h1>
+          <p class="hero-text" data-i18n="intro">
+            Ciao, sono Frelerr. Qui raccolgo video, social, esperimenti e commissioni.
+          </p>
+          <div class="hero-actions">
+            <a class="primary-button" href="#work" data-i18n="ctaWork">Guarda</a>
+            <a class="ghost-button" href="#contact" data-i18n="ctaContact">Link</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="work">
+        <div class="section-heading">
+          <p class="eyebrow" data-i18n="workEyebrow">Progetti</p>
+          <h2 data-i18n="workTitle">Cose che sto facendo o che voglio mostrare.</h2>
+        </div>
+
+        <div class="category-tabs" id="category-tabs" role="tablist" aria-label="Portfolio categories"></div>
+
+        <div class="work-grid" id="work-grid"></div>
+      </section>
+
+      <section class="section about-section" id="about">
+        <div>
+          <p class="eyebrow" data-i18n="aboutEyebrow">Chi sono</p>
+          <h2 data-i18n="aboutTitle">Faccio contenuti, esperimenti e lavori su richiesta.</h2>
+        </div>
+        <p data-i18n="aboutText">
+          Questa pagina raccoglie i miei canali, i miei progetti e le commissioni. Tengo tutto qui, semplice e diretto.
+        </p>
+      </section>
+
+      <section class="section contact-section" id="contact">
+        <div>
+          <p class="eyebrow" data-i18n="contactEyebrow">Link</p>
+          <h2 data-i18n="contactTitle">Mi trovi qui.</h2>
+        </div>
+        <div class="contact-actions" id="contact-actions">
+          <a class="primary-button" href="https://www.youtube.com/@frelerr" target="_blank" rel="noreferrer">YouTube</a>
+        </div>
+      </section>
+    </main>
+
+    <dialog class="editor-modal" id="editor-modal">
+      <form method="dialog" class="editor-shell">
+        <div class="editor-header">
+          <div>
+            <p class="eyebrow">Private editor</p>
+            <h2>Modifica contenuti</h2>
+          </div>
+          <button class="icon-button" value="close" aria-label="Chiudi" type="submit">x</button>
+        </div>
+
+        <div class="editor-login" id="editor-login">
+          <label for="editor-password">Password</label>
+          <div class="editor-row">
+            <input id="editor-password" type="password" autocomplete="current-password" placeholder="Password editor">
+            <button class="primary-button" id="editor-unlock" type="button">Sblocca</button>
+          </div>
+          <p class="editor-hint">Cambia la password in <strong>content.js</strong>. Su un sito statico serve per evitare tocchi casuali, non sostituisce un backend privato.</p>
+        </div>
+
+        <div class="editor-area" id="editor-area" hidden>
+          <label for="settings-password">Password editor</label>
+          <input id="settings-password" class="editor-input" type="text" autocomplete="off">
+
+          <div class="editor-tools">
+            <button class="primary-button" id="add-project" type="button">+ Progetto</button>
+            <button class="ghost-button" id="apply-editor" type="button">Applica modifiche</button>
+          </div>
+
+          <div class="project-editor-list" id="project-editor-list"></div>
+
+          <details class="advanced-editor">
+            <summary>JSON automatico</summary>
+            <label for="content-json">Portfolio data</label>
+            <textarea id="content-json" spellcheck="false" readonly></textarea>
+          </details>
+
+          <div class="editor-actions">
+            <button class="primary-button" id="save-local" type="button">Salva in questo browser</button>
+            <button class="ghost-button" id="generate-code" type="button">Genera content.js</button>
+            <button class="ghost-button" id="download-json" type="button">Scarica JSON</button>
+            <button class="ghost-button" id="reset-local" type="button">Reset bozze</button>
+          </div>
+          <label for="generated-code">Codice completo per content.js</label>
+          <textarea id="generated-code" class="generated-code" spellcheck="false" readonly></textarea>
+          <p class="editor-hint">Per pubblicare modifiche permanenti, premi <strong>Genera content.js</strong> e sostituisci il contenuto di <strong>content.js</strong> con il codice completo qui sopra.</p>
+        </div>
+      </form>
+    </dialog>
+
+    <script src="content.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
