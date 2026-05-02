@@ -5,7 +5,7 @@ window.PORTFOLIO_SETTINGS = {
 
 window.PORTFOLIO_DATA = {
   contact: {
-    email: "frelerr@example.com",
+    email: "frelerrlele@gmail.com",
     links: [
       {
         label: "YouTube",
