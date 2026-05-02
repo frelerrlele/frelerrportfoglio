@@ -1,5 +1,5 @@
 window.PORTFOLIO_SETTINGS = {
-  editorPassword: "cambia-questa-password",
+  editorPassword: "yopassword",
   contentVersion: "frelerr-texts-v2"
 };
 
