@@ -1,0 +1,39 @@
+{
+  "users": [
+    {
+      "id": "f3b32556-e80b-48e8-9163-dc55ff1ca608",
+      "provider": "email",
+      "email": "tommaso.pedrazzi@gmail.com",
+      "username": "Tommaso",
+      "avatar": "",
+      "password": {
+        "salt": "6628c5597c1b80cb9a88455c4975058a",
+        "hash": "37d4f890a765ac0982d7863df64577838dd967a6c282af505c81996b8f7f13a2",
+        "iterations": 120000,
+        "digest": "sha256"
+      },
+      "createdAt": "2026-05-04T17:19:11.332Z",
+      "updatedAt": "2026-05-04T17:19:11.332Z"
+    },
+    {
+      "id": "f9b1f61d-49ba-4891-a50e-1f85a04b3acb",
+      "provider": "discord",
+      "discordId": "1380199919918518434",
+      "email": "tommaso.pedrazzi2013@gmail.com",
+      "username": "Pigia",
+      "avatar": "https://cdn.discordapp.com/avatars/1380199919918518434/7dff176b33a329db530a4949b7f4fae3.png?size=128",
+      "createdAt": "2026-05-04T17:29:13.931Z",
+      "updatedAt": "2026-05-08T13:25:57.647Z"
+    },
+    {
+      "id": "4ae40358-1f4f-4eaf-92b6-5f5f90bef965",
+      "provider": "google",
+      "googleId": "110855321841510973964",
+      "email": "tommaso.pedrazzi2013@gmail.com",
+      "username": "Tommaso Pedrazzi",
+      "avatar": "https://lh3.googleusercontent.com/a/ACg8ocLQwlPsBABuICI58Av5S0wVkQV2gmnxFRCJqzvpFYF2lXhvUi4=s96-c",
+      "createdAt": "2026-05-04T17:47:30.513Z",
+      "updatedAt": "2026-05-08T13:25:46.171Z"
+    }
+  ]
+}

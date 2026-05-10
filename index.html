@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="it">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Portfolio di Frelerr con video, social, esperimenti e commissioni.">
+    <title>Frelerr</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@500;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body class="is-loading">
+    <div class="scroll-progress" id="scroll-progress" aria-hidden="true"></div>
+    <canvas id="liquid-canvas" aria-hidden="true"></canvas>
+
+    <header class="topbar">
+      <a class="brand" href="#home" aria-label="Portfolio home">
+        <span class="brand-mark home-mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24">
+            <path d="M3.8 11.2 12 4.6l8.2 6.6"></path>
+            <path d="M6.2 10.2v9h11.6v-9"></path>
+            <path d="M9.7 19.2v-5.1h4.6v5.1"></path>
+          </svg>
+        </span>
+        <span data-i18n="siteName">Portfolio</span>
+      </a>
+
+      <nav class="nav-links" aria-label="Main navigation">
+        <a href="#work" data-i18n="navWork">Progetti</a>
+        <a href="#about" data-i18n="navAbout">Info</a>
+        <a href="#contact" data-i18n="navContact">Link</a>
+      </nav>
+
+      <div class="toolbar">
+        <span class="sr-only" data-i18n="languageLabel">Lingua</span>
+        <div id="language-select" class="language-options" aria-label="Language"></div>
+      </div>
+    </header>
+
+    <main id="home">
+      <section class="hero">
+        <div class="hero-copy">
+          <p class="eyebrow" data-i18n="eyebrow">Portfolio di Frelerr</p>
+          <h1 data-i18n="headline">Frelerr</h1>
+          <p class="hero-text" data-i18n="intro">
+            Ciao, sono Frelerr. Qui raccolgo video, social, esperimenti e commissioni.
+          </p>
+          <div class="hero-actions">
+            <a class="primary-button" href="#work" data-i18n="ctaWork">Progetti</a>
+            <a class="ghost-button" href="#about" data-i18n="aboutEyebrow">Chi Sono</a>
+            <a class="ghost-button" href="#contact" data-i18n="ctaContact">Link</a>
+          </div>
+        </div>
+        <div class="hero-visual" aria-hidden="true">
+          <img src="assets/frelerr-logo.png" alt="">
+        </div>
+      </section>
+
+      <section class="section work-section" id="work">
+        <div class="section-heading">
+          <p class="eyebrow" data-i18n="workEyebrow">Progetti</p>
+          <h2 data-i18n="workTitle">Cose che sto facendo o che voglio mostrare.</h2>
+        </div>
+
+        <div class="category-tabs" id="category-tabs" role="tablist" aria-label="Portfolio categories"></div>
+
+        <div class="work-grid" id="work-grid"></div>
+      </section>
+
+      <section class="section about-section" id="about">
+        <div>
+          <p class="eyebrow" data-i18n="aboutEyebrow">Chi sono</p>
+          <h2 data-i18n="aboutTitle">Faccio contenuti, esperimenti e lavori su richiesta.</h2>
+        </div>
+        <p data-i18n="aboutText">
+          Questa pagina raccoglie i miei canali, i miei progetti e le commissioni. Tengo tutto qui, semplice e diretto.
+        </p>
+      </section>
+
+      <section class="section contact-section" id="contact">
+        <div>
+          <p class="eyebrow" data-i18n="contactEyebrow">Link</p>
+          <h2 data-i18n="contactTitle">Mi trovi qui.</h2>
+        </div>
+        <div class="contact-actions" id="contact-actions">
+          <a class="primary-button" href="https://www.youtube.com/@frelerr" target="_blank" rel="noreferrer">YouTube</a>
+        </div>
+      </section>
+    </main>
+
+    <dialog class="auth-modal" id="auth-modal" hidden>
+      <form class="auth-shell" id="auth-form">
+        <div class="editor-header">
+          <div>
+            <p class="eyebrow" data-i18n="authEyebrow">Accesso</p>
+            <h2 data-i18n="authTitle">Crea il tuo profilo</h2>
+          </div>
+          <button class="icon-button" id="auth-close" aria-label="Chiudi" type="button">x</button>
+        </div>
+
+        <div class="auth-layout">
+          <div class="auth-grid">
+            <label data-i18n-label="authEmailLabel">Email
+              <input id="auth-email" type="email" autocomplete="email" required placeholder="mario.rossi@gmail.com">
+              <span class="field-help" data-i18n="authEmailHelp">Inserisci una E-Mail valida</span>
+            </label>
+            <label data-i18n-label="authPasswordLabel">Password
+              <span class="password-field">
+                <input id="auth-password" type="password" autocomplete="new-password" required minlength="6" placeholder="Password">
+                <button id="auth-password-toggle" type="button" aria-label="Mostra password">◉</button>
+              </span>
+              <span class="field-help" data-i18n="authPasswordHelp">Minimo 6 caratteri</span>
+              <span class="password-meter" aria-hidden="true"><span id="password-meter-bar"></span></span>
+              <span class="field-help password-status" id="password-status" data-i18n="passwordWeak">Password debole</span>
+            </label>
+            <label data-i18n-label="authUsernameLabel">Nome utente
+              <input id="auth-username" type="text" autocomplete="username" required minlength="2" placeholder="StellaRossa">
+              <span class="field-help" data-i18n="authUsernameHelp">Non inserire il tuo vero Nome</span>
+            </label>
+          </div>
+
+          <div class="auth-photo-panel">
+            <button class="auth-photo-preview" id="auth-photo-trigger" type="button" aria-label="Carica foto profilo">
+              <span id="auth-photo-initial">S</span>
+              <img id="auth-photo-preview" alt="" hidden>
+            </button>
+            <p data-i18n="authPhotoHelp">Clicca il cerchio per caricare una foto.</p>
+            <input id="auth-photo" type="file" accept="image/*" hidden>
+          </div>
+        </div>
+
+        <div class="captcha-check" id="auth-captcha-wrap">
+          <div id="auth-recaptcha"></div>
+          <p id="auth-recaptcha-fallback" data-i18n="authCaptchaMissing">Aggiungi una site key reCAPTCHA in content.js per attivare la verifica reale.</p>
+        </div>
+
+        <p class="editor-hint" data-i18n="authHint">Accesso locale dimostrativo: per renderlo reale serve un backend.</p>
+        <p class="auth-error" id="auth-error" role="alert"></p>
+
+        <div class="editor-actions">
+          <button class="primary-button" type="submit" data-i18n="authSubmit">Entra</button>
+          <button class="ghost-button" id="auth-cancel" type="button" data-i18n="authCancel">Annulla</button>
+        </div>
+      </form>
+    </dialog>
+
+    <dialog class="editor-modal" id="editor-modal">
+      <form method="dialog" class="editor-shell">
+        <div class="editor-header">
+          <div>
+            <p class="eyebrow">Private editor</p>
+            <h2>Modifica contenuti</h2>
+          </div>
+          <button class="icon-button" value="close" aria-label="Chiudi" type="submit">x</button>
+        </div>
+
+        <div class="editor-login" id="editor-login">
+          <label for="editor-password">Password</label>
+          <div class="editor-row">
+            <input id="editor-password" type="password" autocomplete="current-password" placeholder="Password editor">
+            <button class="primary-button" id="editor-unlock" type="button">Sblocca</button>
+          </div>
+          <p class="editor-hint">Cambia la password in <strong>content.js</strong>. Su un sito statico serve per evitare tocchi casuali, non sostituisce un backend privato.</p>
+        </div>
+
+        <div class="editor-area" id="editor-area" hidden>
+          <label for="settings-password">Password editor</label>
+          <input id="settings-password" class="editor-input" type="text" autocomplete="off">
+
+          <div class="editor-tools">
+            <button class="primary-button" id="add-project" type="button">+ Progetto</button>
+            <button class="ghost-button" id="apply-editor" type="button">Applica modifiche</button>
+          </div>
+
+          <div class="project-editor-list" id="project-editor-list"></div>
+
+          <details class="advanced-editor">
+            <summary>JSON automatico</summary>
+            <label for="content-json">Portfolio data</label>
+            <textarea id="content-json" spellcheck="false" readonly></textarea>
+          </details>
+
+          <div class="editor-actions">
+            <button class="primary-button" id="save-local" type="button">Salva in questo browser</button>
+            <button class="ghost-button" id="generate-code" type="button">Genera content.js</button>
+            <button class="ghost-button" id="download-json" type="button">Scarica JSON</button>
+            <button class="ghost-button" id="reset-local" type="button">Reset bozze</button>
+          </div>
+          <label for="generated-code">Codice completo per content.js</label>
+          <textarea id="generated-code" class="generated-code" spellcheck="false" readonly></textarea>
+          <p class="editor-hint">Per pubblicare modifiche permanenti, premi <strong>Genera content.js</strong> e sostituisci il contenuto di <strong>content.js</strong> con il codice completo qui sopra.</p>
+        </div>
+      </form>
+    </dialog>
+
+    <dialog class="image-lightbox" id="image-lightbox" aria-label="Anteprima immagine">
+      <button class="image-lightbox-close" id="image-lightbox-close" type="button" aria-label="Chiudi anteprima">x</button>
+      <figure class="image-lightbox-shell">
+        <img id="image-lightbox-img" alt="">
+        <figcaption id="image-lightbox-title"></figcaption>
+      </figure>
+    </dialog>
+
+    <script src="content.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>

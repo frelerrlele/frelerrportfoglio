@@ -1,0 +1,8 @@
+{
+  "scripts": {
+    "build": "node scripts/build-static.js",
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "dependencies": {}
+}
